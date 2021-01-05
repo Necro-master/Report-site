@@ -1,0 +1,24 @@
+<head>
+    <title>DR Report site</title>
+</head>
+<body>
+    <div>
+        <h1><a href="/">DR Report site</a></h1>
+    </div>
+    <form method="POST" class="post-form">{% csrf_token %}
+    <table>
+            <tr>
+                <td>Ссылка</td>
+                <td>Тональность</td>
+            </tr>
+            {% for url in urls %}
+                <tr>
+                    <td>{{ form.as_p }}</td>
+                    <td><a href="{{ url }}" target="_blank">{{ url }}</a></td>
+                </tr>
+            {% endfor %}
+    </table>
+    <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% load static %}
+<head>
+    <title>DR Report site</title>
+</head>
+<body>
+    <div>
+        <h1 class="tytle" align="center"><a href="/">DR Report site</a></h1>
+        <link rel="stylesheet" href="{% static 'css/person.css' %}">
+    </div>
+
+    <table  align="center" class="table_price">
+    <caption>Person list</caption>
+            <tr>
+                <td style="font-weight:bold">Персона</td>
+                <td style="font-weight:bold">Статус</td>
+                <td style="font-weight:bold">Кнопка</td>
+                <td style="font-weight:bold">Отладка</td>
+            </tr>
+
+            {% for person in persons %}
+                <tr>
+                <td>{{ person }}</td>
+                <td>{{ person.get_status }}</td>
+                <td>{% if person.status == 0 %}
+                    <a href='report/{{ person.id }}'>Сделать отчет</a>
+                    {% elif person.status == 2 %}
+                    <a href='report/{{ person.id }}/distribute'>Разметить тональность </a>
+                    {% elif person.status == 3 %}
+                    <a href='report/{{ person.id }}/second_faza' target="_blank">Получить таблицу </a>
+                    {% endif %}
+                </td>
+                    <td> <a href='report/{{ person.id }}/drop_status'>Обнулить статус </a> </td>
+                </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>

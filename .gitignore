@@ -1,0 +1,11 @@
+venv
+*.xlsx
+*.sqlite3
+.idea
+back-up
+Person_1
+Person_2
+*.exe
+*.pyc
+creds.py
+__pycache__
